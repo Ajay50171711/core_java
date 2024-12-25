@@ -1,0 +1,126 @@
+Operators in Java
+Operators are special symbols or keywords used to perform operations on variables and values. Here's a detailed explanation of different types of operators with simple coding examples:
+
+1 Arithmetic Operators
+These operators perform mathematical operations.
++	Addition	           a + b
+-	Subtraction	         a - b
+*	Multiplication	     a * b
+/	Division           	 a / b
+%	Modulus (remainder)	 a % b
+
+
+Example:
+int a = 10, b = 3;
+System.out.println("Addition: " + (a + b));      // 13
+System.out.println("Subtraction: " + (a - b));  // 7
+System.out.println("Multiplication: " + (a * b)); // 30
+System.out.println("Division: " + (a / b));     // 3
+System.out.println("Modulus: " + (a % b));      // 1
+
+2 Relational Operators
+These operators compare two values and return a boolean result.
+Operator	Description	Example
+==	Equal to	                 a == b
+!=	Not equal to	             a != b
+>	Greater than	               a > b
+<	Less than	                   a < b
+>=	Greater than or equal to	 a >= b
+<=	Less than or equal to	     a <= b
+
+Example:
+int a = 5, b = 10;
+System.out.println(a > b);  // false
+System.out.println(a < b);  // true
+System.out.println(a == b); // false
+System.out.println(a != b); // true
+
+3 Logical Operators
+These operators work with boolean expressions.
+Operator	Description	Example
+
+&&	Logical AND	  a && b
+|| Logical OR     a||b
+!	Logical NOT	    !a
+
+Example:
+boolean x = true, y = false;
+System.out.println(x && y); // false
+System.out.println(x || y); // true
+System.out.println(!x);     // false
+
+4 Assignment Operators
+These assign values to variables.
+Operator	Description	Example
+=	Assign	              a = b
++=	Add and assign	    a += b
+-=	Subtract and assign	a -= b
+*=	Multiply and assign	a *= b
+/=	Divide and assign	a /= b
+%=	Modulus and assign	a %= b
+
+Example:
+int a = 10;
+a += 5; // a = a + 5
+System.out.println(a); // 15
+
+5 Bitwise Operators
+These operate at the binary level.
+Operator	Description	Example
+&	Bitwise AND	        a & b
+| Bitwise OR          a | b
+^	Bitwise XOR	        a ^ b
+~	Bitwise Complement	~a
+<<	Left shift	      a << 2
+>>	Right shift	      a >> 2
+
+Example:
+int a = 5; // 0101 in binary
+int b = 3; // 0011 in binary
+System.out.println(a & b); // 1 (0001 in binary)
+System.out.println(a | b); // 7 (0111 in binary)
+System.out.println(a ^ b); // 6 (0110 in binary)
+System.out.println(~a);    // -6 (inverts bits)     n = -(n+1)
+System.out.println(a << 1); // 10 (1010 in binary)
+System.out.println(a >> 1); // 2 (0010 in binary)
+
+6 Unary Operators
+These operate on a single operand.
+Operator	Description	Example
++	Positive value	         +a
+-	Negative value	         -a
+++	Increment	             ++a or a++
+--	Decrement	             --a or a--
+
+Example:
+int a = 5;
+System.out.println(++a); // 6 (pre-increment)
+System.out.println(a--); // 6 (post-decrement, then a = 5)
+
+
+7 Ternary Operator
+This is a shorthand for if-else.
+| Syntax | condition ? trueValue : falseValue |
+
+Example:
+int a = 5, b = 10;
+int max = (a > b) ? a : b;
+System.out.println("Max: " + max); // Max: 10
+
+8 Operator Precedence
+Precedence determines the order of operation execution.
+Operator	Associativity
+()	Left to Right
+* / %	Left to Right
++ -	Left to Right
+< <= > >=	Left to Right
+== !=	Left to Right
+&&	Left to Right	
+= += -= *= /= %=	Right to Left
+
+Example:
+int result = 10 + 5 * 2; // Multiplication is evaluated first
+System.out.println(result); // 20
+
+result = (10 + 5) * 2; // Parentheses change precedence
+System.out.println(result); // 30
