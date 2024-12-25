@@ -1,101 +1,126 @@
-Variables in Java
-A variable is a container for storing data. Think of it as a labeled box where you can keep your data.
+1 Primitive Data Types
+Primitive data types are the most basic types of data. They are predefined by the programming language.
 
-Key Characteristics:
-Name: Identifies the variable (like a label on the box).
-Type: Determines what kind of data it can hold (e.g., number, text).
-Value: The actual data stored in the variable.
+Data Type	Size	Description	Example
+byte:	   1 byte (8 bits)	Stores whole numbers from -128 to 127     	                byte a = 10;
+short:   2 bytes (16 bits)	Stores whole numbers from -32,768 to 32,767	              short b = 200;
+int:   	 4 bytes (32 bits)	Stores whole numbers from -2³¹ to 2³¹-1	                  int c = 1000;
+long:	   8 bytes (64 bits)	Stores whole numbers beyond int range	                    long d = 100000L;
+float: 	 4 bytes (32 bits)	Stores fractional numbers with 6-7 digits precision     	float e = 10.5f;
+double:	 8 bytes (64 bits)	Stores fractional numbers with 15 digits precision	      double f = 20.99;
+char:	   2 bytes (16 bits)	Stores a single character	                                char g = 'A';
+boolean: 1 bit	Stores true or false values	                                          boolean h = true;
 
-  Syntax for Declaring a Variable:
-  type variableName = value;
+2 Non-Primitive Data Types
+Non-primitive data types are user-defined or derived from primitive types.
 
-int age = 25;        // 'age' is a variable of type 'int' holding the value 25
-String name = "John"; // 'name' is a variable of type 'String' holding "John"
+Strings:
+A sequence of characters.
+Example: String name = "John";
 
+Arrays:
+Collection of similar data types.
+Example: int[] numbers = {1, 2, 3};
 
-Rules for Naming Variables
-Must start with a letter, underscore (_), or dollar sign ($).
-Cannot start with a number.
-No spaces or special characters (other than _ and $).
-Cannot use Java keywords (e.g., class, public, etc.).
-
- Data Types in Java
-A data type specifies the kind of data a variable can hold. Java has two main categories of data types:
-  
-Primitive Data Types (8 types)
-  
-Integer Types:
-byte (1 byte): -128 to 127
-short (2 bytes): -32,768 to 32,767
-int (4 bytes): -2 billion to 2 billion
-long (8 bytes): Larger range (use L suffix for values, e.g., 123L)
-  
-Floating-Point Types:
-float (4 bytes): For decimal numbers (use F suffix, e.g., 3.14F)
-double (8 bytes): For larger/more precise decimal numbers.
-  
-Character Type:
-char (2 bytes): Single character, e.g., 'A'.
-  
-Boolean Type:
-boolean: Can only be true or false.
-  
+Classes and Objects:
+Used to represent real-world entities.
 Example:
-int number = 10;      // Integer
-float pi = 3.14F;     // Floating-point number
-char letter = 'A';    // Single character
-boolean isJavaFun = true; // Boolean value
+class Car {
+    String brand;
+    int speed;
+}
 
-                              
-Type Casting
-Java allows you to convert between compatible data types:
+3 Variables
+Variables store data values in memory.
 
-Implicit Casting (Widening): Automatically converts smaller to larger types.
-int num = 10;
-double d = num; // int to double
+Types of Variables:
 
-                              
-Explicit Casting (Narrowing): Manually converts larger to smaller types.
-double pi = 3.14;
-int wholePi = (int) pi; // double to int
+Local Variables:
+Declared inside a method or block.
+Scope is limited to the method/block.
+Example:
+void display() {
+    int localVar = 10;
+    System.out.println(localVar);
+}
 
+Instance Variables:
+Declared inside a class but outside any method.
+Each object of the class gets its own copy.
+Example:
+class Employee {
+    String name; // Instance variable
+}
+Static Variables
 
+Declared with the static keyword.
+Shared among all objects of the class.
+Example:
+java
+Copy code
+class Company {
+    static String companyName = "TechCorp";
+}
 
-    public class Main {
+4 Constants and Literals:
+
+Constants: Use final to declare a variable whose value cannot be changed.
+Example:
+final int MAX_VALUE = 100;
+
+Literals: Fixed values assigned to variables.
+Example:
+int age = 25;       // Integer literal
+char grade = 'A';   // Character literal
+String name = "Alex"; // String literal
+
+5 Type Casting:
+Type casting is converting one data type into another.
+
+Types of Casting:
+Implicit Casting (Widening)
+Automatically done by the compiler when there is no risk of data loss.
+Example:
+int num = 100;
+double numDouble = num; // Implicit casting
+System.out.println(numDouble); // Output: 100.0
+
+Explicit Casting (Narrowing)
+Manually done by the programmer when there is a risk of data loss.
+Example:
+double numDouble = 99.99;
+int numInt = (int) numDouble; // Explicit casting
+System.out.println(numInt); // Output: 99
+
+Code Example Combining Everything:
+--------------------------------------
+public class DataTypesDemo {
+    // Instance variable
+    String instanceVar = "Instance Variable";
+
+    // Static variable
+    static String staticVar = "Static Variable";
+
     public static void main(String[] args) {
-        // Primitive Data Types
-        int age = 25;                 // Integer
-        double salary = 45000.50;     // Double for precise decimals
-        char grade = 'A';             // Character
-        boolean isEmployed = true;    // Boolean
+        // Local variable
+        int localVar = 50;
 
-        // Implicit Casting (Widening)
-        long largerAge = age;         // int to long (automatic)
-        System.out.println("Larger Age (long): " + largerAge);
+        // Constants
+        final int CONSTANT = 100;
 
-        // Explicit Casting (Narrowing)
-        double pi = 3.14159;
-        int wholePi = (int) pi;       // double to int (manual)
-        System.out.println("Whole Pi (int): " + wholePi);
+        // Implicit casting
+        int intVal = 42;
+        double doubleVal = intVal;
 
-        // Reference Data Types
-        String name = "Alice";        // String
-        int[] scores = {85, 90, 95};  // Array of integers
+        // Explicit casting
+        double doubleNum = 42.99;
+        int intNum = (int) doubleNum;
 
-        // Printing the values
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Salary: " + salary);
-        System.out.println("Grade: " + grade);
-        System.out.println("Is Employed: " + isEmployed);
-        System.out.print("Scores: ");
-        for (int score : scores) {
-            System.out.print(score + " ");
-        }
-        System.out.println();
-
-        // Demonstrating Type Compatibility
-        float floatSalary = (float) salary; // Casting double to float
-        System.out.println("Float Salary: " + floatSalary);
+        // Print values
+        System.out.println("Local Variable: " + localVar);
+        System.out.println("Static Variable: " + staticVar);
+        System.out.println("Implicit Casting: " + doubleVal);
+        System.out.println("Explicit Casting: " + intNum);
+        System.out.println("Constant: " + CONSTANT);
     }
 }
