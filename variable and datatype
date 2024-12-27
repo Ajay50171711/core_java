@@ -51,13 +51,11 @@ Example:
 class Employee {
     String name; // Instance variable
 }
-Static Variables
 
+Static Variables:
 Declared with the static keyword.
 Shared among all objects of the class.
 Example:
-java
-Copy code
 class Company {
     static String companyName = "TechCorp";
 }
