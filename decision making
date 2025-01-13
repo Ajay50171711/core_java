@@ -1,0 +1,96 @@
+
+In Java, decision-making statements allow your program to execute specific blocks of code based on certain conditions. These statements enable your application to react dynamically to different situations during execution.
+
+Types of Decision-Making Statements in Java
+if Statement
+if-else Statement
+if-else-if Ladder
+switch Statement
+1. if Statement
+The if statement evaluates a condition and executes the block of code inside it only if the condition is true.
+
+Syntax:
+if (condition) {
+    // Code to be executed if condition is true
+}
+
+
+Example:
+int number = 10;
+if (number > 5) {
+    System.out.println("The number is greater than 5");
+}
+2. if-else Statement
+The if-else statement provides an alternative block of code to execute when the condition is false.
+
+Syntax:
+if (condition) {
+    // Code to be executed if condition is true
+} else {
+    // Code to be executed if condition is false
+}
+
+Example:
+int number = 3;
+if (number > 5) {
+    System.out.println("The number is greater than 5");
+} else {
+    System.out.println("The number is not greater than 5");
+}
+3. if-else-if Ladder
+The if-else-if ladder checks multiple conditions sequentially. Once a true condition is found, its corresponding block is executed, and the rest are skipped.
+
+Syntax:
+if (condition1) {
+    // Code for condition1
+} else if (condition2) {
+    // Code for condition2
+} else if (condition3) {
+    // Code for condition3
+} else {
+    // Code if none of the conditions are true
+}
+
+Example:
+int marks = 85;
+if (marks >= 90) {
+    System.out.println("Grade: A");
+} else if (marks >= 75) {
+    System.out.println("Grade: B");
+} else if (marks >= 50) {
+    System.out.println("Grade: C");
+} else {
+    System.out.println("Grade: F");
+}
+
+
+4. switch Statement
+The switch statement evaluates a variable or expression and executes the matching case block. If no match is found, the default block (if present) executes.
+
+Syntax:
+switch (expression) {
+    case value1:
+        // Code for value1
+        break;
+    case value2:
+        // Code for value2
+        break;
+    // More cases...
+    default:
+        // Code if no case matches
+}
+
+Example:
+int day = 3;
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+        break;
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
+        break;
+    default:
+        System.out.println("Invalid day");
