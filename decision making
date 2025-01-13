@@ -94,3 +94,79 @@ switch (day) {
         break;
     default:
         System.out.println("Invalid day");
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class DecisionMakingExample {
+
+    public static void main(String[] args) {
+
+        // Create a Scanner object to take input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        // 1. if Statement Example
+        System.out.print("Enter a number for the if statement: ");
+        int number = scanner.nextInt();
+        if (number > 5) {
+            System.out.println("if Statement: The number is greater than 5");
+        }
+
+        // 2. if-else Statement Example
+        System.out.print("Enter a number for the if-else statement: ");
+        int anotherNumber = scanner.nextInt();
+        if (anotherNumber > 5) {
+            System.out.println("if-else Statement: The number is greater than 5");
+        } else {
+            System.out.println("if-else Statement: The number is not greater than 5");
+        }
+
+        // 3. if-else-if Ladder Example
+        System.out.print("Enter your marks (0-100): ");
+        int marks = scanner.nextInt();
+        if (marks >= 90) {
+            System.out.println("if-else-if Ladder: Grade A");
+        } else if (marks >= 75) {
+            System.out.println("if-else-if Ladder: Grade B");
+        } else if (marks >= 50) {
+            System.out.println("if-else-if Ladder: Grade C");
+        } else {
+            System.out.println("if-else-if Ladder: Grade F");
+        }
+
+        // 4. switch Statement Example
+        System.out.print("Enter a day number (1 for Monday, 7 for Sunday): ");
+        int day = scanner.nextInt();
+        switch (day) {
+            case 1:
+                System.out.println("switch Statement: Monday");
+                break;
+            case 2:
+                System.out.println("switch Statement: Tuesday");
+                break;
+            case 3:
+                System.out.println("switch Statement: Wednesday");
+                break;
+            case 4:
+                System.out.println("switch Statement: Thursday");
+                break;
+            case 5:
+                System.out.println("switch Statement: Friday");
+                break;
+            case 6:
+                System.out.println("switch Statement: Saturday");
+                break;
+            case 7:
+                System.out.println("switch Statement: Sunday");
+                break;
+            default:
+                System.out.println("switch Statement: Invalid day");
+        }
+
+        // Close the scanner to prevent resource leaks
+        scanner.close();
+    }
+}
+
