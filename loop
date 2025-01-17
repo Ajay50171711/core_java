@@ -1,0 +1,82 @@
+What are Loops in Java?
+A loop in Java is used to execute a block of code repeatedly as long as the specified condition is true. Loops help in reducing redundancy in code and are a core concept in programming.
+
+What are Loops in Java?
+A loop in Java is used to execute a block of code repeatedly as long as the specified condition is true. Loops help in reducing redundancy in code and are a core concept in programming.
+
+Types of Loops in Java
+for Loop
+while Loop
+do-while Loop
+Enhanced for Loop (for-each loop)
+
+1. for Loop
+for (int i = 1; i <= 5; i++) {
+    System.out.println("Iteration: " + i);
+}
+
+
+2. while Loop
+int i = 1;
+while (i <= 5) {
+    System.out.println("Iteration: " + i);
+    i++;
+}
+
+
+3. do-while Loop
+int i = 1;
+do {
+    System.out.println("Iteration: " + i);
+    i++;
+} while (i <= 5);
+
+
+4. Enhanced for Loop (for-each)
+int[] numbers = {1, 2, 3, 4, 5};
+for (int num : numbers) {
+    System.out.println("Number: " + num);
+}
+
+
+Key Differences Between Loops
+-----------------------------
+Loop Type      	              Use Case	                                                          Key Feature
+for loop	        Fixed number of iterations	                                             Initialization included
+while loop	      Unknown iterations, condition evaluated before execution	                Pre-check loop
+do-while loop	    Unknown iterations, condition evaluated after execution	                  Post-check loop
+for-each loop	   Iterating over arrays/collections	                                      Simpler syntax for arrays
+
+
+---------------------------------------------------------------------------------------------------------------
+Find the Sum of Even Numbers from 1 to 20 Using a for Loop
+-------------------------------------------------
+public class SumOfEvens {
+    public static void main(String[] args) {
+        int sum = 0;
+        
+        for (int i = 2; i <= 20; i += 2) {
+            sum += i;
+        }
+        
+        System.out.println("Sum of even numbers from 1 to 20: " + sum);
+    }
+}
+-------------------------------------------------------------------------------------
+
+Print Multiplication Table of 5 Using a while Loop
+------------------------------------------------
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        int num = 5;
+        int i = 1;
+        
+        System.out.println("Multiplication Table of 5:");
+        while (i <= 10) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+            i++;
+        }
+    }
+}
+------------------------------------------------------------
+
