@@ -1,0 +1,70 @@
+1. Void Method (No Return Value)
+This method does not return any value.
+
+
+public class MethodTypes {
+
+    // Void method that doesn't return anything
+    public static void printMessage() {
+        System.out.println("Hello, this is a void method!");
+    }
+
+    public static void main(String[] args) {
+        printMessage();  // Calling the void method
+    }
+}
+Explanation:
+The method printMessage is defined with a return type of void and doesn't return anything. It simply prints a message to the console.
+
+2. Method with Return Type (e.g., int, String)
+This method returns a value of a specified type.
+
+public class MethodTypes {
+
+    // Method with return type 'int' that returns the sum of two numbers
+    public static int addNumbers(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    public static void main(String[] args) {
+        int sum = addNumbers(10, 5);  // Calling the method and storing the result
+        System.out.println("The sum is: " + sum);  // Output the sum
+    }
+}
+Explanation:
+The addNumbers method returns an integer value, which is the sum of num1 and num2.
+
+3. Static Method (Class Method)
+This method belongs to the class, not to instances of the class, and can be called directly on the class.
+
+public class MethodTypes {
+
+    // Static method that prints a greeting
+    public static void greet() {
+        System.out.println("Hello from the static method!");
+    }
+
+    public static void main(String[] args) {
+        greet();  // Calling the static method
+    }
+}
+Explanation:
+The greet method is static, so it can be called directly using the class name without creating an object of the class.
+
+4. Instance Method (Non-Static Method)
+This method is associated with an object of the class. You need to create an instance of the class to call this method.
+
+public class MethodTypes {
+
+    // Instance method (non-static)
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public static void main(String[] args) {
+        MethodTypes obj = new MethodTypes();  // Creating an object of MethodTypes
+        obj.printMessage("Hello from the instance method!");  // Calling the instance method
+    }
+}
+Explanation:
+The printMessage method is non-static (instance method), so it is called through an object of the class (obj).
