@@ -1,4 +1,4 @@
-public class ArrayExample {
+public class Main {
     public static void main(String[] args) {
         // Declare and Initialize an Array
         int[] numbers = {10, 20, 30, 40, 50};
@@ -10,7 +10,7 @@ public class ArrayExample {
         // Modify an Array Element
         numbers[1] = 25;
         System.out.println("Modified element at index 1: " + numbers[1]); // Output: 25
-
+         System.out.println(numbers.length);
         // Using a Loop to Traverse the Array
         System.out.println("Array elements:");
         for (int i = 0; i < numbers.length; i++) {
@@ -18,3 +18,4 @@ public class ArrayExample {
         }
     }
 }
+
