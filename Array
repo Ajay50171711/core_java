@@ -21,6 +21,8 @@ public class Main {
 
 ------------------------------------------------------------------------------------------------
 
+
+
 public class Main {
     public static void main(String[] args) {
         // Declare and Initialize a 2x2 Matrix (2D array)
@@ -34,4 +36,69 @@ public class Main {
         System.out.println("Element at row 1, column 1: " + matrix[1][1]); // Output: 4
     }
 }
+
+--------------------------------------------------------------------------------------------------
+public class Main {
+    public static void main(String[] args) {
+        // Declare an array
+        int[] numbers = new int[5];
+
+        // Initialize elements
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = i * 2; // Assign double the index
+        }
+
+        // Print elements
+        System.out.println("Array elements:");
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class Main {
+    public static void main(String[] args) {
+        // Declare and initialize a String array
+        String[] fruits = {"Apple", "Banana", "Cherry"};
+
+        // Access elements
+        System.out.println("First fruit: " + fruits[0]); // Output: Apple
+
+        // Modify an element
+        fruits[1] = "Blueberry";
+        System.out.println("Updated second fruit: " + fruits[1]); // Output: Blueberry
+
+        // Loop through the array
+        System.out.println("Fruit list:");
+        for (int i = 0; i < fruits.length; i++) {
+            System.out.println(fruits[i]);
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------
+public class Main {
+    public static void main(String[] args) {
+        // Declare and initialize a 2D array
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        // Access elements
+        System.out.println("Element at (1, 2): " + matrix[1][2]); // Output: 6
+
+        // Loop through the 2D array
+        System.out.println("Matrix:");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+------------------------------------------------------------------------------
 
