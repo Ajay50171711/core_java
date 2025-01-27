@@ -1,0 +1,63 @@
+class Person {
+    String name;
+    int age;
+    Person() {
+            
+        System.out.println("Non-parameterized constructor called!");
+    }   
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person();
+        
+    }
+}
+
+-----------------------------------------------------------------------------------------
+class Person {
+    String name;
+    int age;
+
+    // Non-parameterized constructor
+    Person() {
+        name = "John Doe";  // Default name
+        age = 25;           // Default age
+        System.out.println("Non-parameterized constructor called!");
+    }
+
+    void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object using the non-parameterized constructor
+        Person person = new Person();
+        person.displayInfo();  // Output: Name: John Doe, Age: 25
+    }
+}
+
+--------------------------------------------------------------------------------------------
+class Person {
+    String name;
+    int age;
+
+    // Constructor
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 30);
+        person.displayInfo();  // Output: Name: Alice, Age: 30
+    }
+}
