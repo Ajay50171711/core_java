@@ -1,0 +1,106 @@
+What is Inheritance?
+Inheritance is one of the fundamental concepts of Object-Oriented Programming (OOP). It allows a class (child class) to acquire the properties and behaviors (methods) of another class (parent class).
+
+Why Use Inheritance?
+
+Code Reusability – You don’t need to rewrite the same code multiple times.
+Better Organization – It makes code more readable and structured.
+Extensibility – You can enhance the functionality of existing classes without modifying them.
+
+Types of Inheritance in Java
+Single Inheritance (One class inherits from another)
+Multilevel Inheritance (Class A → Class B → Class C)
+Hierarchical Inheritance (One parent, multiple child classes)
+(Note: Java does not support multiple inheritance with classes to avoid confusion and ambiguity.)
+
+// Parent class (Super Class)
+class Animal {
+    void eat() {
+        System.out.println("I can eat.");
+    }
+}
+
+// Child class (Sub Class) inheriting from Animal
+class Dog extends Animal {
+    void bark() {
+        System.out.println("I can bark.");
+    }
+}
+
+// Main class to run the program
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat();  // Inherited method from Animal class
+        myDog.bark(); // Method of Dog class
+    }
+}
+
+
+// Parent class (Super Class)
+class Animal {
+    void eat() {
+        System.out.println("I can eat.");
+    }
+}
+
+// Intermediate class (Child of Animal, Parent of Dog)
+class Mammal extends Animal {
+    void walk() {
+        System.out.println("I can walk.");
+    }
+}
+
+// Child class (Sub Class)
+class Dog extends Mammal {
+    void bark() {
+        System.out.println("I can bark.");
+    }
+}
+
+// Main class to test
+public class MultilevelInheritance {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat();  // From Animal class
+        myDog.walk(); // From Mammal class
+        myDog.bark(); // From Dog class
+    }
+}
+
+
+// Parent class
+class Animal {
+    void eat() {
+        System.out.println("I can eat.");
+    }
+}
+
+// Child class 1
+class Dog extends Animal {
+    void bark() {
+        System.out.println("I can bark.");
+    }
+}
+
+// Child class 2
+class Cat extends Animal {
+    void meow() {
+        System.out.println("I can meow.");
+    }
+}
+
+// Main class
+public class HierarchicalInheritance {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat();  // Inherited from Animal
+        myDog.bark(); // Dog-specific method
+
+        System.out.println();
+
+        Cat myCat = new Cat();
+        myCat.eat();  // Inherited from Animal
+        myCat.meow(); // Cat-specific method
+    }
+}
