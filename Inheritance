@@ -36,6 +36,7 @@ public class InheritanceExample {
     }
 }
 
+----------------------------------------------------------------------------------------------------
 
 // Parent class (Super Class)
 class Animal {
@@ -68,6 +69,7 @@ public class MultilevelInheritance {
     }
 }
 
+---------------------------------------------------------------------------------------------
 
 // Parent class
 class Animal {
