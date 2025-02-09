@@ -1,0 +1,190 @@
+1. Method Overloading (Compile-Time Polymorphism)
+Definition:
+
+Method Overloading allows multiple methods in the same class with the same name but different parameters (different number, type, or sequence of parameters).
+It is resolved at compile-time (also called static binding).
+
+Example of Method Overloading:
+--diff. number of parameter
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+public class OverloadingExample1 {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(5, 10));       // Output: 15
+        System.out.println(calc.add(5, 10, 15));   // Output: 30
+    }
+}
+
+---------------------------------------------------------------------------------
+-----diff. datatype
+
+class Multiply {
+    int multiply(int a, int b) {
+        return a * b;
+    }
+
+    double multiply(double a, double b) {
+        return a * b;
+    }
+}
+
+public class OverloadingExample2 {
+    public static void main(String[] args) {
+        Multiply m = new Multiply();
+        System.out.println(m.multiply(4, 5));       // Output: 20
+        System.out.println(m.multiply(4.5, 5.5));   // Output: 24.75
+    }
+}
+------------------------------------------------------------------------------------------
+ --Different Sequence of Parameters
+
+class Display {
+    void show(int a, String b) {
+        System.out.println("Integer: " + a + ", String: " + b);
+    }
+
+    void show(String b, int a) {
+        System.out.println("String: " + b + ", Integer: " + a);
+    }
+}
+
+public class OverloadingExample3 {
+    public static void main(String[] args) {
+        Display d = new Display();
+        d.show(10, "Hello");   // Output: Integer: 10, String: Hello
+        d.show("Hello", 10);   // Output: String: Hello, Integer: 10
+    }
+}
+------------------------------------------------------------------------------------
+--Overloading Constructor
+
+class Person {
+    String name;
+    int age;
+
+    // Constructor 1
+    Person(String name) {
+        this.name = name;
+    }
+
+    // Constructor 2
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class OverloadingExample4 {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice");
+        Person p2 = new Person("Bob", 25);
+
+        p1.display();   // Output: Name: Alice, Age: 0
+        p2.display();   // Output: Name: Bob, Age: 25
+    }
+}
+----------------------------------------------------------------------------------------------
+2. Method Overriding (Run-Time Polymorphism)
+Definition:
+
+Method Overriding occurs when a subclass provides a specific implementation of a method that is already defined in its parent class.
+It is resolved at run-time (also called dynamic binding).
+Example of Method Overriding
+
+// Parent Class
+class Animal {
+    void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child Class (Overrides makeSound method)
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class OverridingExample {
+    public static void main(String[] args) {
+     
+        Animal myDog = new Dog(); // Upcasting
+        myDog.makeSound(); // Output: Dog barks (Overridden method is called)
+    }
+}
+
+--------------------------------------------------------------------------------------------------
+
+class Parent {
+    void show() {
+        System.out.println("Parent class method");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        super.show(); // Calls parent method
+        System.out.println("Child class method");
+    }
+}
+
+public class OverridingExample2 {
+    public static void main(String[] args) {
+        Child obj = new Child();
+        obj.show();
+    }
+}
+---------------------------------------------------------------------------------
+
+class Bike {
+    final void run() {
+        System.out.println("Bike is running");
+    }
+}
+
+class Honda extends Bike {
+    // This will cause a compilation error
+    // void run() {
+    //     System.out.println("Honda is running");
+    // }
+}
+
+public class OverridingExample5 {
+    public static void main(String[] args) {
+        Honda honda = new Honda();
+        honda.run(); // Output: Bike is running
+    }
+}
+
+NOTE: If function is declared as final then we can't override it
+
+When to Use Overloading & Overriding?
+
+Use Overloading When:
+You need multiple methods with the same name but different parameters for flexibility.
+Example: print(int), print(double), print(String).
+
+Use Overriding When:
+You need to modify the behavior of an inherited method in a subclass.
+Example: A Dog class overrides makeSound() from Animal class.
+
+
+
+
+
+
