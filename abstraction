@@ -1,0 +1,156 @@
+Abstraction in Core Java:
+1. Introduction to Abstraction
+Abstraction is one of the four fundamental Object-Oriented Programming (OOP) concepts, alongside encapsulation, inheritance, and polymorphism. It is the process of hiding implementation details and showing only the functionality to the user.
+
+An abstract class is a class declared with the abstract keyword. Key characteristics:
+
+Can have both abstract and concrete methods
+Cannot be instantiated
+Must be inherited
+
+
+// Abstract class Shape
+abstract class Shape {
+    // Abstract method
+    abstract double calculateArea();
+    
+    // Concrete method
+    void display() {
+        System.out.println("Area is: " + calculateArea());
+    }
+}
+
+// Circle class extending Shape
+class Circle extends Shape {
+    double radius;
+    
+    Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    double calculateArea() {
+        return 3.14 * radius * radius;
+    }
+}
+
+// Rectangle class extending Shape
+class Rectangle extends Shape {
+    double length;
+    double width;
+    
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+    
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+// Main class to test
+public class Main {
+    public static void main(String[] args) {
+        // Create a circle
+        Circle circle = new Circle(5);
+        System.out.println("Circle:");
+        circle.display();
+        
+        // Create a rectangle
+        Rectangle rectangle = new Rectangle(4, 6);
+        System.out.println("\nRectangle:");
+        rectangle.display();
+    }
+}
+
+
+
+---------------------------------------------------------------------
+
+// Example 1: Simple Calculator System
+abstract class Calculator {
+    abstract int add(int a, int b);
+    abstract int subtract(int a, int b);
+    
+    // Concrete method
+    void displayResult(int result) {
+        System.out.println("Result is: " + result);
+    }
+}
+
+class BasicCalculator extends Calculator {
+    @Override
+    int add(int a, int b) {
+        return a + b;
+    }
+    
+    @Override
+    int subtract(int a, int b) {
+        return a - b;
+    }
+}
+
+// Example 2: Simple Vehicle System
+interface Vehicle {
+    void start();
+    void stop();
+}
+
+class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car is starting");
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Car is stopping");
+    }
+}
+
+class Bike implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Bike is starting");
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Bike is stopping");
+    }
+}
+
+// Main class to test both examples
+public class Main {
+    public static void main(String[] args) {
+        // Testing Calculator
+        System.out.println("=== Calculator Test ===");
+        Calculator calc = new BasicCalculator();
+        
+        int sum = calc.add(5, 3);
+        calc.displayResult(sum);
+        
+        int difference = calc.subtract(10, 4);
+        calc.displayResult(difference);
+        
+        // Testing Vehicles
+        System.out.println("\n=== Vehicle Test ===");
+        Vehicle car = new Car();
+        Vehicle bike = new Bike();
+        
+        System.out.println("\nTesting Car:");
+        car.start();
+        car.stop();
+        
+        System.out.println("\nTesting Bike:");
+        bike.start();
+        bike.stop();
+    }
+}
+
+
+
+
+
