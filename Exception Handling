@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class DivisionExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        try {
+            // Get first number from user
+            System.out.print("Enter first number: ");
+            int num1 = scanner.nextInt();
+            
+            // Get second number from user
+            System.out.print("Enter second number: ");
+            int num2 = scanner.nextInt();
+            
+            // Perform division
+            int result = num1 / num2;
+            System.out.println("Result of " + num1 + " / " + num2 + " = " + result);
+            
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Cannot divide by zero!");
+            System.out.println("Exception message: " + e.getMessage());
+        }  finally {
+            scanner.close();
+        }
+    }
+}
+
+
+========================================================================================================================================================
+public class Main {
+    public static void multipleCatchExample() {
+        try {
+            String str = "Ajay";
+            // First try to cause NullPointerException
+            System.out.println(str.length()); // This will throw NullPointerException
+
+            // This code will never execute
+            int[] arr = new int[5];
+            arr[3] = 50;
+            System.out.println(arr[3]);
+            // ArrayIndexOutOfBoundsException
+            
+        } catch (NullPointerException e) {
+            System.out.println("Null Pointer Exception caught!");
+            System.out.println("Error: " + e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds Exception caught!");
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Generic Exception caught!");
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        multipleCatchExample();
+    }
+}
