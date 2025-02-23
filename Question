@@ -1,0 +1,35 @@
+Find the largest element in the array
+
+find the second largest element in the array
+
+class SimpleSecondLargest {
+    public static void main(String[] args) {
+        // Let's take a small array of just 5 numbers
+        int[] numbers = {10, 5, 8, 12, 3};
+        
+        // Initialize first and second with minimum values
+        int first = 0;     // to store largest
+        int second = 0;    // to store second largest
+        
+        // First find the largest number
+        for(int i = 0; i < numbers.length; i++) {
+            if(numbers[i] > first) {
+                first = numbers[i];
+            }
+        }
+        
+        // Now find second largest
+        for(int i = 0; i < numbers.length; i++) {
+            if(numbers[i] > second && numbers[i] < first) {
+                second = numbers[i];
+            }
+        }
+        
+        System.out.println("Array elements are:");
+        for(int num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println("\nLargest: " + first);
+        System.out.println("Second Largest: " + second);
+    }
+}
