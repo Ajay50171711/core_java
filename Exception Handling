@@ -57,3 +57,29 @@ public class Main {
         multipleCatchExample();
     }
 }
+---------------------------------------------------------------------------------------------------
+// Step 1: Create a custom exception class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);  // Pass the message to Exception class
+    }
+}
+
+// Step 2: Use the custom exception in a program
+public class CustomExceptionExample {
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or above!");
+        } else {
+            System.out.println("You are eligible.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16); // This will throw the exception
+        } catch (InvalidAgeException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+    }
+}
