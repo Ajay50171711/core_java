@@ -1,0 +1,268 @@
+In core Java, both string methods and input methods are fundamental concepts for working with text and user interaction. 
+
+String Methods in Java
+Strings in Java are objects of the String class that represent sequences of characters. The String class provides many built-in methods to manipulate strings:
+Common String Methods:
+
+Basic Methods:
+length(): Returns the number of characters in the string
+charAt(int index): Returns the character at the specified index
+isEmpty(): Checks if the string is empty
+
+
+String Comparison:
+equals(Object obj): Compares string content for equality
+equalsIgnoreCase(String str): Compares strings ignoring case
+compareTo(String str): Compares strings lexicographically
+
+
+Searching and Extraction:
+indexOf(String str): Returns the index of the first occurrence
+lastIndexOf(String str): Returns the index of the last occurrence
+substring(int beginIndex): Returns substring from specified index
+substring(int beginIndex, int endIndex): Returns substring between indexes
+
+
+Modification:
+concat(String str): Concatenates strings
+replace(char old, char new): Replaces characters
+replaceAll(String regex, String replacement): Replaces all occurrences matching regex
+trim(): Removes whitespace from both ends
+toLowerCase(): Converts to lowercase
+toUpperCase(): Converts to uppercase
+
+
+Checking:
+startsWith(String prefix): Checks if string starts with specified prefix
+endsWith(String suffix): Checks if string ends with specified suffix
+contains(CharSequence sequence): Checks if string contains the sequence
+---------------------------------------------------------------------------
+public class StringMethodsExamples {
+    public static void main(String[] args) {
+        // Basic Methods
+        basicMethods();
+        
+        // String Comparison Methods
+        comparisonMethods();
+        
+        // Searching and Extraction Methods
+        searchingExtractionMethods();
+        
+        // Modification Methods
+        modificationMethods();
+        
+        // Checking Methods
+        checkingMethods();
+    }
+    
+    public static void basicMethods() {
+        System.out.println("\n----- BASIC METHODS -----\n");
+        
+        // length()
+        String text = "Hello Java";
+        int length = text.length();
+        System.out.println("Original string: \"" + text + "\"");
+        System.out.println("length(): " + length);
+        
+        // charAt(int index)
+        char character = text.charAt(1);
+        System.out.println("\nOriginal string: \"" + text + "\"");
+        System.out.println("charAt(1): " + character);
+        
+        // isEmpty()
+        String text1 = "";
+        String text2 = "Hello";
+        System.out.println("\nFirst string: \"" + text1 + "\"");
+        System.out.println("Second string: \"" + text2 + "\"");
+        System.out.println("isEmpty() for first string: " + text1.isEmpty());
+        System.out.println("isEmpty() for second string: " + text2.isEmpty());
+    }
+    
+    public static void comparisonMethods() {
+        System.out.println("\n----- STRING COMPARISON METHODS -----\n");
+        
+        // equals(Object obj)
+        String str1 = "Hello";
+        String str2 = "Hello";
+        String str3 = "hello";
+        System.out.println("First string: \"" + str1 + "\"");
+        System.out.println("Second string: \"" + str2 + "\"");
+        System.out.println("Third string: \"" + str3 + "\"");
+        System.out.println("equals() - First equals Second: " + str1.equals(str2));
+        System.out.println("equals() - First equals Third: " + str1.equals(str3));
+        
+        // equalsIgnoreCase(String str)
+        System.out.println("\nFirst string: \"" + str1 + "\"");
+        System.out.println("Third string: \"" + str3 + "\"");
+        System.out.println("equalsIgnoreCase() - First equals Third (ignoring case): " + 
+                            str1.equalsIgnoreCase(str3));
+        
+        // compareTo(String str)
+        String a = "apple";
+        String b = "banana";
+        System.out.println("\nFirst string: \"" + a + "\"");
+        System.out.println("Second string: \"" + b + "\"");
+        System.out.println("compareTo() - apple compared to banana: " + a.compareTo(b));
+        System.out.println("compareTo() - banana compared to apple: " + b.compareTo(a));
+        System.out.println("compareTo() - apple compared to apple: " + a.compareTo(a));
+    }
+    
+    public static void searchingExtractionMethods() {
+        System.out.println("\n----- SEARCHING AND EXTRACTION METHODS -----\n");
+        
+        // indexOf(String str)
+        String text = "Hello World";
+        int index = text.indexOf("World");
+        System.out.println("Original string: \"" + text + "\"");
+        System.out.println("indexOf(\"World\"): " + index);
+        
+        // lastIndexOf(String str)
+        String text2 = "Hello World, Hello Java";
+        int lastIndex = text2.lastIndexOf("Hello");
+        System.out.println("\nOriginal string: \"" + text2 + "\"");
+        System.out.println("lastIndexOf(\"Hello\"): " + lastIndex);
+        
+        // substring(int beginIndex)
+        String sub1 = text.substring(6);
+        System.out.println("\nOriginal string: \"" + text + "\"");
+        System.out.println("substring(6): \"" + sub1 + "\"");
+        
+        // substring(int beginIndex, int endIndex)
+        String sub2 = text.substring(0, 5);
+        System.out.println("\nOriginal string: \"" + text + "\"");
+        System.out.println("substring(0, 5): \"" + sub2 + "\"");
+    }
+    
+    public static void modificationMethods() {
+        System.out.println("\n----- MODIFICATION METHODS -----\n");
+        
+        // concat(String str)
+        String str1 = "Hello";
+        String str2 = " World";
+        String result = str1.concat(str2);
+        System.out.println("First string: \"" + str1 + "\"");
+        System.out.println("Second string: \"" + str2 + "\"");
+        System.out.println("concat(): \"" + result + "\"");
+        
+        // replace(char old, char new)
+        String text = "Hello";
+        String newText = text.replace('l', 'w');
+        System.out.println("\nOriginal string: \"" + text + "\"");
+        System.out.println("replace('l', 'w'): \"" + newText + "\"");
+        
+        // replaceAll(String regex, String replacement)
+        String text2 = "Hello 123 World 456";
+        String newText2 = text2.replaceAll("\\d+", "NUMBER");
+        System.out.println("\nOriginal string: \"" + text2 + "\"");
+        System.out.println("replaceAll(\"\\\\d+\", \"NUMBER\"): \"" + newText2 + "\"");
+        
+        // trim()
+        String text3 = "   Hello World   ";
+        String trimmed = text3.trim();
+        System.out.println("\nOriginal string: \"" + text3 + "\"");
+        System.out.println("trim(): \"" + trimmed + "\"");
+        
+        // toLowerCase()
+        String text4 = "Hello WORLD";
+        String lower = text4.toLowerCase();
+        System.out.println("\nOriginal string: \"" + text4 + "\"");
+        System.out.println("toLowerCase(): \"" + lower + "\"");
+        
+        // toUpperCase()
+        String text5 = "Hello world";
+        String upper = text5.toUpperCase();
+        System.out.println("\nOriginal string: \"" + text5 + "\"");
+        System.out.println("toUpperCase(): \"" + upper + "\"");
+    }
+    
+    public static void checkingMethods() {
+        System.out.println("\n----- CHECKING METHODS -----\n");
+        
+        // startsWith(String prefix)
+        String text = "Hello World";
+        boolean starts = text.startsWith("Hello");
+        System.out.println("Original string: \"" + text + "\"");
+        System.out.println("startsWith(\"Hello\"): " + starts);
+        
+        // endsWith(String suffix)
+        boolean ends = text.endsWith("World");
+        System.out.println("\nOriginal string: \"" + text + "\"");
+        System.out.println("endsWith(\"World\"): " + ends);
+        
+        // contains(CharSequence sequence)
+        boolean contains = text.contains("lo Wo");
+        System.out.println("\nOriginal string: \"" + text + "\"");
+        System.out.println("contains(\"lo Wo\"): " + contains);
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
+Input Methods in Java
+There are several ways to get user input in Java:
+
+1. Scanner Class
+The most common way to read input is using the Scanner class:
+
+import java.util.Scanner;
+public class InputExample {
+    public static void main(String[] args) {
+        // Create a Scanner object
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine(); // Read a line of text
+        
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt(); // Read an integer
+        
+        System.out.println("Hello, " + name + "! You are " + age + " years old.");
+        
+        scanner.close(); // Close the scanner
+    }
+}
+Scanner methods include:
+
+nextLine(): Reads a line of text
+next(): Reads the next token (word)
+nextInt(): Reads an integer
+nextDouble(): Reads a double
+nextBoolean(): Reads a boolean
+
+2. BufferedReader Class
+For more efficient reading of characters, lines, and arrays:
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        System.out.print("Enter your name: ");
+        String name = reader.readLine();
+        
+        System.out.println("Hello, " + name + "!");
+        
+        reader.close();
+    }
+}
+3. Console Class
+Available since Java 6, useful for password input:
+import java.io.Console;
+
+public class ConsoleExample {
+    public static void main(String[] args) {
+        Console console = System.console();
+        if (console == null) {
+            System.out.println("Console not available");
+            return;
+        }
+        
+        String username = console.readLine("Username: ");
+        char[] password = console.readPassword("Password: "); // Doesn't echo characters
+        
+        // Process username and password
+        System.out.println("Hello, " + username);
+    }
+}
+Both string methods and input methods are essential for most Java applications, especially when building interactive programs.RetryClaude does not have the ability to run the code it generates yet.Claude can make mistakes. Please double-check responses.
