@@ -197,72 +197,118 @@ public class StringMethodsExamples {
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------
-Input Methods in Java
-There are several ways to get user input in Java:
-
+Java Input Methods Simplified
+In Java, there are three main ways to get input from users:
 1. Scanner Class
-The most common way to read input is using the Scanner class:
+This is the most common and easiest way to read user input:
 
 import java.util.Scanner;
-public class InputExample {
+
+public class ScannerMethodsExample {
     public static void main(String[] args) {
-        // Create a Scanner object
-        Scanner scanner = new Scanner(System.in);
+        // Create a Scanner
+        Scanner input = new Scanner(System.in);
         
-        System.out.print("Enter your name: ");
-        String name = scanner.nextLine(); // Read a line of text
+        // Example 1: nextLine() - reads a whole line of text
+        System.out.print("Enter your full name: ");
+        String fullName = input.nextLine();
+        System.out.println("Your full name is: " + fullName);
         
+        // Example 2: next() - reads just one word
+        System.out.print("Enter your favorite color: ");
+        String favoriteColor = input.next();
+        System.out.println("Your favorite color is: " + favoriteColor);
+        
+        // Clear the buffer (consume the leftover newline after next())
+        input.nextLine();
+        
+        // Example 3: nextInt() - reads a number (without decimal)
         System.out.print("Enter your age: ");
-        int age = scanner.nextInt(); // Read an integer
+        int age = input.nextInt();
+        System.out.println("You are " + age + " years old.");
         
-        System.out.println("Hello, " + name + "! You are " + age + " years old.");
+        // Clear the buffer (consume the leftover newline after nextInt())
+        input.nextLine();
         
-        scanner.close(); // Close the scanner
+        // Example 4: nextDouble() - reads a number (with decimal)
+        System.out.print("Enter your height in meters: ");
+        double height = input.nextDouble();
+        System.out.println("Your height is " + height + " meters.");
+        
+        // Always close the Scanner when done
+        input.close();
     }
 }
-Scanner methods include:
 
-nextLine(): Reads a line of text
-next(): Reads the next token (word)
-nextInt(): Reads an integer
-nextDouble(): Reads a double
-nextBoolean(): Reads a boolean
 
-2. BufferedReader Class
-For more efficient reading of characters, lines, and arrays:
+Scanner can read different types of data:
+
+nextLine() - reads a whole line of text
+next() - reads just one word
+nextInt() - reads a number (without decimal)
+nextDouble() - reads a number (with decimal)
+
+
+2. BufferedReader
+This method is a bit more efficient but requires handling exceptions:
+
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.IOException;
 
-public class BufferedReaderExample {
+public class SimpleBufferedReader {
     public static void main(String[] args) throws IOException {
+        // Create a BufferedReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
-        System.out.print("Enter your name: ");
+        // Ask for name
+        System.out.print("What's your name? ");
         String name = reader.readLine();
         
-        System.out.println("Hello, " + name + "!");
+        // Ask for age (need to convert string to number)
+        System.out.print("How old are you? ");
+        int age = Integer.parseInt(reader.readLine());
         
+        // Show the information back
+        System.out.println("Hi " + name + "! You are " + age + " years old.");
+        
+        // Always close when done
         reader.close();
     }
 }
-3. Console Class
-Available since Java 6, useful for password input:
-import java.io.Console;
+BufferedReader only reads text (readLine()), so you need to convert to numbers when needed.
 
-public class ConsoleExample {
+3. Console Class
+This is useful mainly for secure input like passwords:
+
+import java.io.Console;
+public class SimpleConsole {
     public static void main(String[] args) {
+        // Get the console (might be null in some environments)
         Console console = System.console();
+        
+        // Check if console is available
         if (console == null) {
-            System.out.println("Console not available");
+            System.out.println("No console available");
             return;
         }
         
+        // Get username directly with prompt
         String username = console.readLine("Username: ");
-        char[] password = console.readPassword("Password: "); // Doesn't echo characters
         
-        // Process username and password
-        System.out.println("Hello, " + username);
+        // Get password (characters won't show when typing)
+        char[] passwordChars = console.readPassword("Password: ");
+        String password = new String(passwordChars);
+        
+        // Show username (never show passwords in real code!)
+        System.out.println("Welcome, " + username);
     }
 }
-Both string methods and input methods are essential for most Java applications, especially when building interactive programs.RetryClaude does not have the ability to run the code it generates yet.Claude can make mistakes. Please double-check responses.
+The Console class is special because it can hide password input, but it doesn't work in all environments (like some IDEs).
+Key Differences:
+
+Scanner: Easiest to use, good for beginners, can read different types directly
+BufferedReader: More efficient for large inputs, only reads text
+Console: Good for secure input like passwords, but doesn't work everywhere
+
+For most simple programs, Scanner is the best choice to start with.
