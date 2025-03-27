@@ -1,0 +1,57 @@
+//to create and write in file
+
+package learn;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Ex {
+    public static void main(String[] args) {
+        // Try-with-resources ensures that resources like FileWriter are closed automatically
+        try (FileWriter writer = new FileWriter("myfile.txt")) {
+
+            // Write data to the file
+            writer.write("Hello, this is a simple file handling example!");
+
+            // No need to explicitly call close(), it's done automatically
+            System.out.println("Data has been written to the file!");
+
+        } catch (IOException e) {
+            // If an error occurs while writing, catch it and print the error message
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+}
+
+=======================================================================================
+package learn;
+
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
+public class Ex {
+    public static void main(String[] args) {
+        try {
+            // We are opening the toy box (file) "myfile.txt" to read toys (data)
+            FileReader reader = new FileReader("myfile.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+
+            // Now we take the toys (data) out of the box (file)
+            String data = bufferedReader.readLine();
+
+            // Show the toys (data) we took out of the box (file)
+            System.out.println("Data from the file: " + data);
+
+            // Don't forget to close the toy box (file) when we are done
+            bufferedReader.close();
+
+        } catch (IOException e) {
+            // If there's an error, we print it
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+}
+
