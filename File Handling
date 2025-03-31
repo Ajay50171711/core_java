@@ -54,4 +54,60 @@ public class Ex {
         }
     }
 }
+================================================================================================================================
+package learn;
+
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+public class Filereaderreader {
+
+    public static void main(String[] args) {
+        try {
+            // Writing to the file using "rw" mode (read-write)
+            try (RandomAccessFile raf = new RandomAccessFile("file2.txt", "rw")) {
+                // Writing some data to the file
+                raf.writeUTF("Hello, this is some text in the file.");
+                raf.writeInt(12345);  // Writing an integer
+            }
+            
+            // Reading from the file using "r" mode (read-only)
+            try (RandomAccessFile raf = new RandomAccessFile("file2.txt", "r")) {
+                // Read the UTF string
+                String text = raf.readUTF();
+                System.out.println("Text read from file: " + text);
+                
+                // Read the integer
+                int number = raf.readInt();
+                System.out.println("Number read from file: " + number);
+            }
+
+            // Appending data to the file using "rw" mode
+            try (RandomAccessFile raf = new RandomAccessFile("file2.txt", "rw")) {
+                // Seek to the end of the file (append mode)
+                raf.seek(raf.length());
+                raf.writeUTF("Appended text after initial data.");
+                System.out.println("Appended data to file.");
+            }
+
+            // Reading from the file again (to read the appended content)
+            try (RandomAccessFile raf = new RandomAccessFile("file2.txt", "r")) {
+                // Read the UTF string
+                String text1 = raf.readUTF();
+                System.out.println("Text read from file: " + text1);
+                
+                // Read the integer
+                int number1 = raf.readInt();
+                System.out.println("Number read from file: " + number1);
+                
+                // Read the appended content
+                String appendedText = raf.readUTF();
+                System.out.println("Appended text read from file: " + appendedText);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
