@@ -1,0 +1,220 @@
+java.util
+│
+├── Collection (interface)
+│   │
+│   ├── List (interface)
+│   │   ├── ArrayList
+│   │   ├── LinkedList
+│   │   ├── Vector
+│   │   │   └── Stack
+│   │
+│   ├── Set (interface)
+│   │   ├── HashSet
+│   │   │   └── LinkedHashSet
+│   │   ├── TreeSet (implements SortedSet, NavigableSet)
+│   │   ├── EnumSet
+│   │
+│   ├── Queue (interface)
+│   │   ├── PriorityQueue
+│   │   ├── LinkedList (also implements List)
+│   │   │
+│   │   └── Deque (interface, extends Queue)
+│   │       ├── ArrayDeque
+│   │       └── LinkedList (also implements List)
+
+========================================================================================
+
+List (interface)
+├── Core Operations
+│   ├── add(E e)                    // Appends element to end
+│   ├── add(int index, E element)   // Inserts at position
+│   ├── get(int index)              // Returns element at position
+│   ├── remove(int index)           // Removes element at position
+│   ├── set(int index, E element)   // Replaces element at position
+│   └── size()                      // Returns number of elements
+│
+├── Positional Access
+│   ├── indexOf(Object o)           // First occurrence position
+│   ├── lastIndexOf(Object o)       // Last occurrence position
+│   └── subList(int from, int to)   // View of portion of list
+│
+├── Implementations
+│   ├── ArrayList
+│   │   ├── Internal Structure: Dynamic array
+│   │   ├── Performance Characteristics
+│   │   │   ├── Random access: O(1)
+│   │   │   ├── Insertion/Deletion (end): O(1) amortized
+│   │   │   ├── Insertion/Deletion (middle): O(n)
+│   │   │   └── Search: O(n)
+│   │   └── Special Features: Fast iteration, good locality of reference
+│   │
+│   ├── LinkedList
+│   │   ├── Internal Structure: Doubly-linked list
+│   │   ├── Performance Characteristics
+│   │   │   ├── Random access: O(n)
+│   │   │   ├── Insertion/Deletion (any position with iterator): O(1)
+│   │   │   ├── Insertion/Deletion (position by index): O(n)
+│   │   │   └── Search: O(n)
+│   │   └── Special Features: Implements both List and Deque interfaces
+│   │
+│   └── Vector (legacy, synchronized)
+│       ├── Internal Structure: Dynamic array (synchronized)
+│       ├── Performance Characteristics: Similar to ArrayList but thread-safe
+│       └── Subclass: Stack
+│           ├── Additional operations: push(), pop(), peek()
+│           └── LIFO (Last-In-First-Out) behavior
+========================================================================================
+2. SET INTERFACE
+Set (interface)
+├── Core Operations
+│   ├── add(E e)          // Adds element if not present
+│   ├── contains(Object o) // Checks if element exists
+│   ├── remove(Object o)   // Removes element if present
+│   └── size()            // Returns number of elements
+│
+├── Bulk Operations
+│   ├── addAll(Collection c)     // Union
+│   ├── retainAll(Collection c)  // Intersection
+│   └── removeAll(Collection c)  // Difference
+│
+├── SortedSet (sub-interface)
+│   ├── first()           // First element
+│   ├── last()            // Last element
+│   └── subSet(E from, E to) // View of portion of set
+│
+├── NavigableSet (sub-interface of SortedSet)
+│   ├── lower(E e)        // Greatest element < e
+│   ├── floor(E e)        // Greatest element <= e
+│   ├── ceiling(E e)      // Least element >= e
+│   └── higher(E e)       // Least element > e
+│
+├── Implementations
+│   ├── HashSet
+│   │   ├── Internal Structure: Backed by HashMap
+│   │   ├── Performance Characteristics
+│   │   │   ├── add/remove/contains: O(1) average case
+│   │   │   └── Iteration: O(capacity + size)
+│   │   └── Special Features: Fastest implementation, no order guarantee
+│   │
+│   ├── LinkedHashSet
+│   │   ├── Internal Structure: HashMap with linked list
+│   │   ├── Performance Characteristics: Similar to HashSet with overhead for maintaining order
+│   │   └── Special Features: Maintains insertion order
+│   │
+│   ├── TreeSet
+│   │   ├── Internal Structure: Red-black tree (TreeMap)
+│   │   ├── Performance Characteristics
+│   │   │   ├── add/remove/contains: O(log n)
+│   │   │   └── Ordered traversal: O(n)
+│   │   └── Special Features: Sorted elements, implements NavigableSet
+│   │
+│   └── EnumSet
+│       ├── Internal Structure: Bit vector
+│       ├── Performance Characteristics: Very fast operations
+│       └── Special Features: Specifically for enum values
+
+
+
+=========================================================================================
+
+3. QUEUE INTERFACE
+Queue (interface)
+├── Core Operations
+│   ├── offer(E e)       // Adds element to queue (capacity-friendly)
+│   ├── poll()           // Removes and returns head (returns null if empty)
+│   ├── peek()           // Returns head without removing (null if empty)
+│   └── size()           // Returns number of elements
+│
+├── Throws Exception Variants
+│   ├── add(E e)         // Adds element (throws exception if capacity restricted)
+│   ├── remove()         // Removes and returns head (throws exception if empty)
+│   └── element()        // Returns head (throws exception if empty)
+│
+├── Deque (sub-interface, double-ended queue)
+│   ├── offerFirst(E e)  // Inserts at front
+│   ├── offerLast(E e)   // Inserts at end
+│   ├── pollFirst()      // Removes from front
+│   ├── pollLast()       // Removes from end
+│   ├── peekFirst()      // Examines front
+│   └── peekLast()       // Examines end
+│
+├── BlockingQueue (sub-interface in java.util.concurrent)
+│   ├── put(E e)         // Blocks until space available
+│   ├── take()           // Blocks until element available
+│   ├── offer(E e, long timeout, TimeUnit unit) // Time-bounded insertion
+│   └── poll(long timeout, TimeUnit unit)       // Time-bounded removal
+│
+├── Implementations
+│   ├── PriorityQueue
+│   │   ├── Internal Structure: Binary heap
+│   │   ├── Performance Characteristics
+│   │   │   ├── peek/element: O(1)
+│   │   │   ├── poll/remove: O(log n)
+│   │   │   ├── add/offer: O(log n)
+│   │   │   └── Contains: O(n)
+│   │   └── Special Features: Elements ordered by priority
+│   │
+│   ├── LinkedList (implements both List and Deque)
+│   │   ├── Performance Characteristics for Queue operations
+│   │   │   ├── offer/poll/peek: O(1)
+│   │   └── Special Features: General-purpose list and queue
+│   │
+│   ├── ArrayDeque
+│   │   ├── Internal Structure: Resizable circular array
+│   │   ├── Performance Characteristics
+│   │   │   ├── add/offer/remove/poll: O(1)
+│   │   │   └── Contains: O(n)
+│   │   └── Special Features: More efficient than LinkedList for most queue operations
+│   │
+│   └── Concurrent Queue Implementations
+│       ├── ConcurrentLinkedQueue: Non-blocking concurrent queue
+│       ├── ArrayBlockingQueue: Bounded blocking queue
+│       ├── LinkedBlockingQueue: Optionally bounded blocking queue
+│       └── PriorityBlockingQueue: Blocking priority queue
+
+====================================================================================
+
+ArrayList Internal Structure:
+┌──────────────────────────────────────────────────┐
+│  ArrayList                                        │
+├──────────────────────────────────────────────────┤
+│ - elementData: Object[]  // Internal array       │
+│ - size: int             // Number of elements    │
+├──────────────────────────────────────────────────┤
+│ + add(E e): boolean                              │
+│ + add(int index, E element): void                │
+│ + get(int index): E                              │
+│ + remove(int index): E                           │
+│ + ensureCapacity(int minCapacity): void          │
+│ + trimToSize(): void                             │
+└──────────────────────────────────────────────────┘
+
+
+=========================================================================
+
+LinkedList Internal Structure:
+┌──────────────────────────────────────────────────┐
+│  LinkedList                                       │
+├──────────────────────────────────────────────────┤
+│ - first: Node<E>  // Reference to first node     │
+│ - last: Node<E>   // Reference to last node      │
+│ - size: int       // Number of elements          │
+├──────────────────────────────────────────────────┤
+│ + add(E e): boolean                              │
+│ + add(int index, E element): void                │
+│ + getFirst(): E                                  │
+│ + getLast(): E                                   │
+│ + removeFirst(): E                               │
+│ + removeLast(): E                                │
+└──────────────────────────────────────────────────┘
+│
+└── Node<E>
+    ├── item: E       // Element value
+    ├── next: Node<E> // Link to next node
+    └── prev: Node<E> // Link to previous node
+
+========================================================================================
+
+
+
+
