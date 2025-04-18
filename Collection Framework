@@ -24,7 +24,7 @@ java.util
 
 ========================================================================================
 
-List (interface)
+1. List (interface)
 ├── Core Operations
 │   ├── add(E e)                    // Appends element to end
 │   ├── add(int index, E element)   // Inserts at position
@@ -214,6 +214,167 @@ LinkedList Internal Structure:
     └── prev: Node<E> // Link to previous node
 
 ========================================================================================
+
+
+import java.util.ArrayList;
+
+public class ArrayListFunctionsDemo {
+    public static void main(String[] args) {
+        ArrayList<String> arrayList = new ArrayList<>();
+        
+        // Adding elements
+        System.out.println("--- Adding Elements ---");
+        arrayList.add("First Element");
+        System.out.println("After add: " + arrayList);
+        
+        arrayList.add(0, "New First Element");
+        System.out.println("After add at index 0: " + arrayList);
+        
+        arrayList.add("Last Element");
+        System.out.println("After adding at end: " + arrayList);
+        
+        // Getting elements
+        System.out.println("\n--- Retrieving Elements ---");
+        System.out.println("Element at index 0: " + arrayList.get(0));
+        System.out.println("Element at index 1: " + arrayList.get(1));
+        System.out.println("Element at last index: " + arrayList.get(arrayList.size() - 1));
+        
+        // Set method - replacing elements
+        System.out.println("\n--- Replacing Elements ---");
+        arrayList.set(1, "Updated Element");
+        System.out.println("After set at index 1: " + arrayList);
+        
+        // Adding more elements
+        arrayList.add("Fourth Element");
+        arrayList.add("Fifth Element");
+        System.out.println("\nExpanded list: " + arrayList);
+        
+        // Removing elements
+        System.out.println("\n--- Removing Elements ---");
+        String removed = arrayList.remove(0);
+        System.out.println("Removed element at index 0: " + removed);
+        System.out.println("List after remove: " + arrayList);
+        
+        boolean isRemoved = arrayList.remove("Fifth Element");
+        System.out.println("Removed 'Fifth Element': " + isRemoved);
+        System.out.println("List after remove by value: " + arrayList);
+        
+        // Searching elements
+        System.out.println("\n--- Searching Elements ---");
+        int index = arrayList.indexOf("Updated Element");
+        System.out.println("Index of 'Updated Element': " + index);
+        
+        boolean contains = arrayList.contains("Last Element");
+        System.out.println("Contains 'Last Element': " + contains);
+        
+        // Size and isEmpty
+        System.out.println("\n--- List Information ---");
+        System.out.println("Size of list: " + arrayList.size());
+        System.out.println("Is list empty: " + arrayList.isEmpty());
+        
+        // Clear the list
+        System.out.println("\n--- Clearing List ---");
+        arrayList.clear();
+        System.out.println("After clear, size: " + arrayList.size());
+        System.out.println("Is list empty: " + arrayList.isEmpty());
+        
+        // Demonstrating capacity management
+        System.out.println("\n--- Capacity Management ---");
+        for (int i = 0; i < 10; i++) {
+            arrayList.add("Element " + i);
+        }
+        System.out.println("List after adding 10 elements: " + arrayList);
+        
+        // Ensure capacity (just calling it, no visible effect in output)
+        arrayList.ensureCapacity(20);
+        System.out.println("Called ensureCapacity(20)");
+        
+        // Trim to size
+        arrayList.trimToSize();
+        System.out.println("Called trimToSize()");
+    }
+}
+
+==========================================================================================================
+
+import java.util.LinkedList;
+
+public class LinkedListFunctionsDemo {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        
+        // Adding elements using addFirst and addLast
+        System.out.println("--- Adding Elements ---");
+        linkedList.addFirst("First Element");
+        System.out.println("After addFirst: " + linkedList);
+        
+        linkedList.addLast("Last Element");
+        System.out.println("After addLast: " + linkedList);
+        
+        // Getting elements using getFirst and getLast
+        System.out.println("\n--- Retrieving Elements ---");
+        System.out.println("First element: " + linkedList.getFirst());
+        System.out.println("Last element: " + linkedList.getLast());
+        
+        // Adding more elements for further demonstration
+        linkedList.add("Middle Element");
+        System.out.println("\nUpdated list: " + linkedList);
+        
+        // Using offer methods (queue operations)
+        System.out.println("\n--- Queue Operations (offer) ---");
+        linkedList.offer("Offered Element");
+        System.out.println("After offer: " + linkedList);
+        
+        linkedList.offerFirst("First Offered");
+        System.out.println("After offerFirst: " + linkedList);
+        
+        linkedList.offerLast("Last Offered");
+        System.out.println("After offerLast: " + linkedList);
+        
+        // Using peek methods
+        System.out.println("\n--- Peek Operations ---");
+        System.out.println("peek: " + linkedList.peek());
+        System.out.println("peekFirst: " + linkedList.peekFirst());
+        System.out.println("peekLast: " + linkedList.peekLast());
+        System.out.println("List after peek operations: " + linkedList);
+        
+        // Using poll methods
+        System.out.println("\n--- Poll Operations ---");
+        System.out.println("poll: " + linkedList.poll());
+        System.out.println("List after poll: " + linkedList);
+        
+        System.out.println("pollFirst: " + linkedList.pollFirst());
+        System.out.println("List after pollFirst: " + linkedList);
+        
+        System.out.println("pollLast: " + linkedList.pollLast());
+        System.out.println("List after pollLast: " + linkedList);
+        
+        // Using push and pop (stack operations)
+        System.out.println("\n--- Stack Operations ---");
+        linkedList.push("Pushed Element");
+        System.out.println("After push: " + linkedList);
+        
+        linkedList.push("Another Pushed Element");
+        System.out.println("After another push: " + linkedList);
+        
+        System.out.println("pop: " + linkedList.pop());
+        System.out.println("List after pop: " + linkedList);
+        
+        // Using removeFirst and removeLast
+        System.out.println("\n--- Remove Operations ---");
+        linkedList.add("New Element");
+        linkedList.add("Another New Element");
+        System.out.println("Updated list: " + linkedList);
+        
+        System.out.println("removeFirst: " + linkedList.removeFirst());
+        System.out.println("List after removeFirst: " + linkedList);
+        
+        System.out.println("removeLast: " + linkedList.removeLast());
+        System.out.println("List after removeLast: " + linkedList);
+    }
+}
+
+==================================================================================================
 
 
 
