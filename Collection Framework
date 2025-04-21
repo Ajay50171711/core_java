@@ -376,6 +376,385 @@ public class LinkedListFunctionsDemo {
 
 ==================================================================================================
 
+import java.util.Vector;
+import java.util.Enumeration;
+
+public class VectorFunctionsDemo {
+    public static void main(String[] args) {
+        Vector<String> vector = new Vector<>();
+        
+        // Adding elements
+        System.out.println("--- Adding Elements ---");
+        vector.add("First Element");
+        System.out.println("After add: " + vector);
+        
+        vector.add(0, "New First Element");
+        System.out.println("After add at index 0: " + vector);
+        
+        vector.addElement("Last Element"); // Legacy method
+        System.out.println("After addElement: " + vector);
+        
+        // Getting elements
+        System.out.println("\n--- Retrieving Elements ---");
+        System.out.println("Element at index 0: " + vector.get(0));
+        System.out.println("Element at index 1: " + vector.get(1));
+        System.out.println("First element: " + vector.firstElement());
+        System.out.println("Last element: " + vector.lastElement());
+        System.out.println("Element at index 1 (elementAt): " + vector.elementAt(1));
+        
+        // Set methods - replacing elements
+        System.out.println("\n--- Replacing Elements ---");
+        vector.set(1, "Updated Element");
+        System.out.println("After set at index 1: " + vector);
+        
+        vector.setElementAt("Another Updated Element", 0); // Legacy method
+        System.out.println("After setElementAt index 0: " + vector);
+        
+        // Adding more elements
+        vector.add("Fourth Element");
+        vector.add("Fifth Element");
+        System.out.println("\nExpanded vector: " + vector);
+        
+        // Removing elements
+        System.out.println("\n--- Removing Elements ---");
+        String removed = vector.remove(0);
+        System.out.println("Removed element at index 0: " + removed);
+        System.out.println("Vector after remove: " + vector);
+        
+        boolean isRemoved = vector.remove("Fifth Element");
+        System.out.println("Removed 'Fifth Element': " + isRemoved);
+        System.out.println("Vector after remove by value: " + vector);
+        
+        vector.add("Element to Remove");
+        vector.removeElementAt(vector.size() - 1); // Legacy method
+        System.out.println("After removeElementAt: " + vector);
+        
+        // Searching elements
+        System.out.println("\n--- Searching Elements ---");
+        int index = vector.indexOf("Updated Element");
+        System.out.println("Index of 'Updated Element': " + index);
+        
+        boolean contains = vector.contains("Last Element");
+        System.out.println("Contains 'Last Element': " + contains);
+        
+        // Size and capacity
+        System.out.println("\n--- Vector Information ---");
+        System.out.println("Size of vector: " + vector.size());
+        System.out.println("Capacity of vector: " + vector.capacity());
+        System.out.println("Is vector empty: " + vector.isEmpty());
+        
+        // Enumeration (legacy way to iterate)
+        System.out.println("\n--- Using Enumeration ---");
+        Enumeration<String> elements = vector.elements();
+        System.out.print("Elements via enumeration: ");
+        while (elements.hasMoreElements()) {
+            System.out.print(elements.nextElement() + " ");
+        }
+        System.out.println();
+        
+        // Clear the vector
+        System.out.println("\n--- Clearing Vector ---");
+        vector.clear();
+        System.out.println("After clear, size: " + vector.size());
+        System.out.println("After clear, capacity: " + vector.capacity());
+        
+        // Capacity management
+        System.out.println("\n--- Capacity Management ---");
+        // Set initial capacity to 5, increment by 5
+        Vector<String> sizedVector = new Vector<>(5, 5);
+        System.out.println("New vector capacity: " + sizedVector.capacity());
+        
+        for (int i = 0; i < 7; i++) {
+            sizedVector.add("Element " + i);
+        }
+        System.out.println("After adding 7 elements, capacity: " + sizedVector.capacity());
+        
+        sizedVector.trimToSize();
+        System.out.println("After trimToSize, capacity: " + sizedVector.capacity());
+        
+        sizedVector.ensureCapacity(20);
+        System.out.println("After ensureCapacity(20), capacity: " + sizedVector.capacity());
+        
+        // Setting size explicitly
+        System.out.println("\n--- Setting Size ---");
+        sizedVector.setSize(10);
+        System.out.println("After setSize(10), size: " + sizedVector.size());
+        System.out.println("Vector with explicit size: " + sizedVector);
+    }
+}
+
+====================================================================================================================
+import java.util.Stack;
+import java.util.EmptyStackException;
+
+public class StackFunctionsDemo {
+    public static void main(String[] args) {
+        Stack<String> stack = new Stack<>();
+        
+        // Pushing elements onto the stack
+        System.out.println("--- Pushing Elements ---");
+        stack.push("First Element");
+        System.out.println("After first push: " + stack);
+        
+        stack.push("Second Element");
+        stack.push("Third Element");
+        System.out.println("After pushing more elements: " + stack);
+        
+        // Peeking at the top element
+        System.out.println("\n--- Peeking Elements ---");
+        String topElement = stack.peek();
+        System.out.println("Top element (peek): " + topElement);
+        System.out.println("Stack after peek: " + stack);
+        
+        // Popping elements from the stack
+        System.out.println("\n--- Popping Elements ---");
+        String poppedElement = stack.pop();
+        System.out.println("Popped element: " + poppedElement);
+        System.out.println("Stack after pop: " + stack);
+        
+        // Searching for elements
+        System.out.println("\n--- Searching Elements ---");
+        stack.push("Fourth Element");
+        stack.push("Fifth Element");
+        System.out.println("Updated stack: " + stack);
+        
+        // search() returns 1-based position from the top of the stack
+        int position = stack.search("Second Element");
+        System.out.println("Position of 'Second Element' from top: " + position);
+        
+        position = stack.search("Nonexistent Element");
+        System.out.println("Position of nonexistent element: " + position); // Returns -1 if not found
+        
+        // Checking if stack is empty
+        System.out.println("\n--- Stack Status ---");
+        boolean isEmpty = stack.empty(); // Note: it's empty(), not isEmpty()
+        System.out.println("Is stack empty? " + isEmpty);
+        System.out.println("Size of stack: " + stack.size());
+        
+        // Vector methods (Stack extends Vector)
+        System.out.println("\n--- Using Vector Methods ---");
+        System.out.println("Element at index 0: " + stack.get(0));
+        System.out.println("First element (from Vector): " + stack.firstElement());
+        System.out.println("Last element (from Vector): " + stack.lastElement());
+        
+        // Clearing the stack
+        System.out.println("\n--- Clearing Stack ---");
+        stack.clear();
+        System.out.println("After clear, size: " + stack.size());
+        System.out.println("Is stack empty? " + stack.empty());
+        
+        // Demonstrating EmptyStackException
+        System.out.println("\n--- Handling Empty Stack ---");
+        try {
+            stack.pop(); // Will throw EmptyStackException
+        } catch (EmptyStackException e) {
+            System.out.println("Caught EmptyStackException when trying to pop from empty stack");
+        }
+        
+        // Quick demonstration of adding elements and operations
+        System.out.println("\n--- Stack Operations Example ---");
+        stack.push("A");
+        stack.push("B");
+        stack.push("C");
+        System.out.println("Stack: " + stack);
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("Stack: " + stack);
+        stack.push("D");
+        System.out.println("After pushing 'D': " + stack);
+        System.out.println("Peek: " + stack.peek());
+        System.out.println("Final stack: " + stack);
+    }
+}
+
+===========================================================================================================================
+Java's Set Interface
+The Set interface in Java is part of the Collections Framework and represents a collection that cannot contain duplicate elements. Here's an explanation of its key characteristics and implementations:
+Key Characteristics of Set
+
+1) No Duplicates: The primary defining feature of a Set is that it rejects duplicate elements.
+2) Unordered Collection: Generally, Sets don't maintain insertion order (with HashSet), though some implementations do (like LinkedHashSet)
+3) No Index Access: Unlike List, you cannot access elements by index
+
+
+
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Collections;
+
+public class HashSetFunctionsExplained {
+    public static void main(String[] args) {
+        // ===== CREATION FUNCTIONS =====
+        
+        // 1. Default constructor - creates empty HashSet with default capacity (16) and load factor (0.75)
+        HashSet<String> set1 = new HashSet<>();
+        System.out.println("1. Empty HashSet: " + set1);
+        
+        // 2. Constructor with initial capacity
+        HashSet<String> set2 = new HashSet<>(20); // Initial capacity of 20
+        System.out.println("2. Empty HashSet with custom capacity: " + set2);
+        
+        // 3. Constructor with initial capacity and load factor
+        HashSet<String> set3 = new HashSet<>(30, 0.8f); // Initial capacity 30, load factor 0.8
+        System.out.println("3. Empty HashSet with custom capacity and load factor: " + set3);
+        
+        // 4. Constructor with Collection - copies all elements from collection
+        String[] fruits = {"Apple", "Banana", "Cherry", "Apple"}; // Note the duplicate
+        HashSet<String> fruitSet = new HashSet<>(Arrays.asList(fruits));
+        System.out.println("4. HashSet from array: " + fruitSet + " (duplicate 'Apple' was ignored)");
+        
+        
+        // ===== ELEMENT MANAGEMENT FUNCTIONS =====
+        
+        // 5. add(E e) - adds element if not present
+        HashSet<String> colors = new HashSet<>();
+        boolean added = colors.add("Red");
+        System.out.println("\n5. Added 'Red': " + added);
+        System.out.println("   HashSet: " + colors);
+        
+        // 6. add() returns false for duplicate elements
+        colors.add("Green");
+        added = colors.add("Red"); // Try adding duplicate
+        System.out.println("6. Added duplicate 'Red': " + added);
+        System.out.println("   HashSet: " + colors);
+        
+        // 7. remove(Object o) - removes element if present
+        boolean removed = colors.remove("Red");
+        System.out.println("7. Removed 'Red': " + removed);
+        System.out.println("   HashSet after removal: " + colors);
+        
+        // 8. remove() returns false if element not found
+        removed = colors.remove("Blue");
+        System.out.println("8. Removed non-existent 'Blue': " + removed);
+        
+        // 9. clear() - removes all elements
+        colors.add("Yellow");
+        colors.add("Purple");
+        System.out.println("9. Before clear: " + colors);
+        colors.clear();
+        System.out.println("   After clear: " + colors);
+        
+        
+        // ===== QUERY FUNCTIONS =====
+        
+        HashSet<Integer> numbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
+        
+        // 10. contains(Object o) - checks if element exists
+        boolean hasThree = numbers.contains(3);
+        boolean hasSix = numbers.contains(6);
+        System.out.println("\n10. Contains 3? " + hasThree);
+        System.out.println("    Contains 6? " + hasSix);
+        
+        // 11. isEmpty() - checks if set has no elements
+        System.out.println("11. Is numbers empty? " + numbers.isEmpty());
+        System.out.println("    Is colors empty? " + colors.isEmpty());
+        
+        // 12. size() - returns number of elements
+        System.out.println("12. Size of numbers: " + numbers.size());
+        
+        
+        // ===== BULK OPERATIONS =====
+        
+        HashSet<Character> set1Chars = new HashSet<>(Arrays.asList('A', 'B', 'C', 'D'));
+        HashSet<Character> set2Chars = new HashSet<>(Arrays.asList('C', 'D', 'E', 'F'));
+        
+        // 13. addAll(Collection) - union operation
+        HashSet<Character> unionSet = new HashSet<>(set1Chars);
+        unionSet.addAll(set2Chars);
+        System.out.println("\n13. Set1: " + set1Chars);
+        System.out.println("    Set2: " + set2Chars);
+        System.out.println("    Union (addAll): " + unionSet);
+        
+        // 14. retainAll(Collection) - intersection operation
+        HashSet<Character> intersectionSet = new HashSet<>(set1Chars);
+        intersectionSet.retainAll(set2Chars);
+        System.out.println("14. Intersection (retainAll): " + intersectionSet);
+        
+        // 15. removeAll(Collection) - difference operation
+        HashSet<Character> differenceSet = new HashSet<>(set1Chars);
+        differenceSet.removeAll(set2Chars);
+        System.out.println("15. Difference (removeAll): " + differenceSet);
+        
+        // 16. containsAll(Collection) - checks if set contains all elements of another collection
+        boolean containsAll = unionSet.containsAll(set1Chars);
+        System.out.println("16. Does union contain all of Set1? " + containsAll);
+        
+        
+        // ===== ITERATION FUNCTIONS =====
+        
+        HashSet<String> cities = new HashSet<>(Arrays.asList("New York", "London", "Tokyo", "Paris"));
+        
+        // 17. Enhanced for loop iteration
+        System.out.println("\n17. Enhanced for loop iteration:");
+        for (String city : cities) {
+            System.out.println("    City: " + city);
+        }
+        
+        // 18. Iterator approach
+        System.out.println("18. Iterator approach:");
+        Iterator<String> iterator = cities.iterator();
+        while (iterator.hasNext()) {
+            System.out.println("    City: " + iterator.next());
+        }
+        
+        // 19. Iterator with remove operation
+        System.out.println("19. Iterator with removal:");
+        iterator = cities.iterator();
+        while (iterator.hasNext()) {
+            String city = iterator.next();
+            if (city.equals("London")) {
+                iterator.remove(); // Safe removal during iteration
+            }
+        }
+        System.out.println("    Cities after removal: " + cities);
+        
+        
+        // ===== UTILITY OPERATIONS =====
+        
+        // 20. toArray() - converts set to Object array
+        Object[] cityArray = cities.toArray();
+        System.out.println("\n20. toArray(): " + Arrays.toString(cityArray));
+        
+        // 21. toArray(T[] a) - converts set to specified array type
+        String[] cityStringArray = cities.toArray(new String[0]);
+        System.out.println("21. toArray(T[]): " + Arrays.toString(cityStringArray));
+        
+        // 22. equals() - compares sets
+        HashSet<String> citiesCopy = new HashSet<>(cities);
+        boolean areEqual = cities.equals(citiesCopy);
+        System.out.println("22. Cities equals its copy? " + areEqual);
+        
+        // 23. hashCode() - returns hash code value for set
+        System.out.println("23. HashCode of cities: " + cities.hashCode());
+        
+        
+        // ===== ADVANCED EXAMPLES =====
+        
+        // 24. Using null values
+        HashSet<String> withNull = new HashSet<>();
+        withNull.add(null);
+        withNull.add("Something");
+        System.out.println("\n24. HashSet with null: " + withNull);
+        System.out.println("    Contains null? " + withNull.contains(null));
+        
+        // 25. Converting between Collections
+        HashSet<Integer> numSet = new HashSet<>(Arrays.asList(5, 2, 9, 1, 3));
+        System.out.println("25. Original set: " + numSet);
+        
+        // Finding min/max elements
+        Integer min = Collections.min(numSet);
+        Integer max = Collections.max(numSet);
+        System.out.println("    Min value: " + min);
+        System.out.println("    Max value: " + max);
+    }
+}
+
+===========================================================================================================================
+
+
+
+
+
 
 
 
