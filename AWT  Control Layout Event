@@ -1,0 +1,283 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class regform extends Frame {
+
+    regform() {
+        // Frame properties
+        setLayout(null);
+        setSize(800, 800);
+        setVisible(true);
+        setTitle("Registration Form");
+        setResizable(false);
+
+        // Close operation
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+        // Heading Label
+        Label l1 = new Label("Registration Form");
+        l1.setBounds(300, 50, 200, 30);
+        l1.setFont(new Font("Arial", Font.BOLD, 18));
+        add(l1);
+
+        // Name Label and TextField
+        Label l2 = new Label("Name");
+        l2.setBounds(300, 100, 100, 30);
+        add(l2);
+
+        TextField t1 = new TextField(20);
+        t1.setBounds(400, 100, 200, 30);
+        add(t1);
+
+        // Email Label and TextField
+        Label l4 = new Label("Email");
+        l4.setBounds(300, 150, 100, 30);
+        add(l4);
+
+        TextField t2 = new TextField(20);
+        t2.setBounds(400, 150, 200, 30);
+        add(t2);
+
+        // Gender Label and CheckboxGroup
+        Label l5 = new Label("Gender");
+        l5.setBounds(300, 200, 100, 30);
+        add(l5);
+
+        CheckboxGroup genderGroup = new CheckboxGroup();
+        Checkbox male = new Checkbox("Male", genderGroup, false);
+        male.setBounds(400, 200, 60, 30);
+        add(male);
+
+        Checkbox female = new Checkbox("Female", genderGroup, false);
+        female.setBounds(470, 200, 70, 30);
+        add(female);
+
+        // Course Label and Choice (Dropdown)
+        Label l6 = new Label("Course");
+        l6.setBounds(300, 250, 100, 30);
+        add(l6);
+
+        Choice course = new Choice();
+        course.add("B.Tech");
+        course.add("B.Sc");
+        course.add("B.Com");
+        course.add("MCA");
+        course.add("MBA");
+        course.setBounds(400, 250, 200, 30);
+        add(course);
+
+        // Submit Button
+        Button submit = new Button("Submit");
+        submit.setBounds(350, 320, 100, 40);
+        add(submit);
+
+        // Button Action Listener
+        submit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = t1.getText();
+                String email = t2.getText();
+                String gender = genderGroup.getSelectedCheckbox() != null
+                        ? genderGroup.getSelectedCheckbox().getLabel()
+                        : "Not selected";
+                String selectedCourse = course.getSelectedItem();
+
+                System.out.println("Name: " + name);
+                System.out.println("Email: " + email);
+                System.out.println("Gender: " + gender);
+                System.out.println("Course: " + selectedCourse);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        new regform(); // Run the form
+    }
+}
+
+
+========================================================================================================================
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class regform extends Frame {
+
+    regform() {
+        // Frame settings
+        setTitle("AWT Full Registration Form");
+        setSize(900, 700);
+        setLayout(null);
+        setResizable(false);
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+        // Form Heading
+        Label heading = new Label("Student Registration Form");
+        heading.setBounds(300, 50, 300, 30);
+        heading.setFont(new Font("Arial", Font.BOLD, 20));
+        add(heading);
+
+        // Name
+        Label nameLabel = new Label("Name:");
+        nameLabel.setBounds(100, 100, 100, 30);
+        add(nameLabel);
+
+        TextField nameField = new TextField();
+        nameField.setBounds(250, 100, 200, 30);
+        add(nameField);
+
+        // Email
+        Label emailLabel = new Label("Email:");
+        emailLabel.setBounds(100, 150, 100, 30);
+        add(emailLabel);
+
+        TextField emailField = new TextField();
+        emailField.setBounds(250, 150, 200, 30);
+        add(emailField);
+
+        // Address (TextArea)
+        Label addressLabel = new Label("Address:");
+        addressLabel.setBounds(100, 200, 100, 30);
+        add(addressLabel);
+
+        TextArea addressArea = new TextArea();
+        addressArea.setBounds(250, 200, 300, 60);
+        add(addressArea);
+
+        // Gender (CheckboxGroup)
+        Label genderLabel = new Label("Gender:");
+        genderLabel.setBounds(100, 280, 100, 30);
+        add(genderLabel);
+
+        CheckboxGroup genderGroup = new CheckboxGroup();
+        Checkbox male = new Checkbox("Male", genderGroup, false);
+        male.setBounds(250, 280, 60, 30);
+        add(male);
+
+        Checkbox female = new Checkbox("Female", genderGroup, false);
+        female.setBounds(320, 280, 70, 30);
+        add(female);
+
+        Checkbox other = new Checkbox("Other", genderGroup, false);
+        other.setBounds(400, 280, 70, 30);
+        add(other);
+
+        // Hobbies (Checkbox)
+        Label hobbyLabel = new Label("Hobbies:");
+        hobbyLabel.setBounds(100, 330, 100, 30);
+        add(hobbyLabel);
+
+        Checkbox music = new Checkbox("Music");
+        music.setBounds(250, 330, 70, 30);
+        add(music);
+
+        Checkbox sports = new Checkbox("Sports");
+        sports.setBounds(330, 330, 70, 30);
+        add(sports);
+
+        Checkbox travel = new Checkbox("Travel");
+        travel.setBounds(410, 330, 70, 30);
+        add(travel);
+
+        // Course (Choice)
+        Label courseLabel = new Label("Course:");
+        courseLabel.setBounds(100, 380, 100, 30);
+        add(courseLabel);
+
+        Choice course = new Choice();
+        course.add("B.Tech");
+        course.add("B.Sc");
+        course.add("B.Com");
+        course.add("MBA");
+        course.add("MCA");
+        course.setBounds(250, 380, 200, 30);
+        add(course);
+
+        // Skills (List - multi-select)
+        Label skillsLabel = new Label("Skills:");
+        skillsLabel.setBounds(100, 430, 100, 30);
+        add(skillsLabel);
+
+        List skillList = new List(4, true);
+        skillList.add("Java");
+        skillList.add("Python");
+        skillList.add("HTML");
+        skillList.add("CSS");
+        skillList.add("JavaScript");
+        skillList.add("C++");
+        skillList.setBounds(250, 430, 200, 80);
+        add(skillList);
+
+        // Submit Button
+        Button submit = new Button("Submit");
+        submit.setBounds(250, 540, 80, 40);
+        add(submit);
+
+        // Reset Button
+        Button reset = new Button("Reset");
+        reset.setBounds(350, 540, 80, 40);
+        add(reset);
+
+        // Submit button action
+        submit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String email = emailField.getText();
+                String address = addressArea.getText();
+                String gender = (genderGroup.getSelectedCheckbox() != null)
+                        ? genderGroup.getSelectedCheckbox().getLabel()
+                        : "Not selected";
+                String courseSelected = course.getSelectedItem();
+
+                String hobbies = "";
+                if (music.getState()) hobbies += "Music ";
+                if (sports.getState()) hobbies += "Sports ";
+                if (travel.getState()) hobbies += "Travel ";
+
+                String[] selectedSkills = skillList.getSelectedItems();
+
+                System.out.println("======= Form Submitted =======");
+                System.out.println("Name: " + name);
+                System.out.println("Email: " + email);
+                System.out.println("Address: " + address);
+                System.out.println("Gender: " + gender);
+                System.out.println("Hobbies: " + hobbies);
+                System.out.println("Course: " + courseSelected);
+                System.out.print("Skills: ");
+                for (String skill : selectedSkills) {
+                    System.out.print(skill + " ");
+                }
+                System.out.println("\n==============================");
+            }
+        });
+
+        // Reset button action
+        reset.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                nameField.setText("");
+                emailField.setText("");
+                addressArea.setText("");
+                genderGroup.setSelectedCheckbox(null);
+                music.setState(false);
+                sports.setState(false);
+                travel.setState(false);
+                skillList.deselect(skillList.getSelectedIndex());
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        new regform();
+    }
+}
+
+
