@@ -868,6 +868,117 @@ public class EnumSetExample {
 }
 
 ==========================================================================================================================
+Queue Interface – Core Operations
+
+import java.util.*;
+
+public class QueueCoreExample {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+        queue.offer("A"); // Adds A
+        queue.offer("B"); // Adds B
+        System.out.println("Peek: " + queue.peek()); // A
+        System.out.println("Poll: " + queue.poll()); // Removes A
+        System.out.println("Size: " + queue.size()); // 1
+    }
+}
+
+
+ Deque Interface (Double-Ended Queue)
+-------------------------------------------
+
+import java.util.*;
+
+public class DequeExample {
+    public static void main(String[] args) {
+        Deque<String> deque = new ArrayDeque<>();
+
+        deque.offerFirst("Front");
+        deque.offerLast("Back");
+
+        System.out.println("Peek First: " + deque.peekFirst()); // Front
+        System.out.println("Peek Last: " + deque.peekLast());   // Back
+
+        System.out.println("Poll First: " + deque.pollFirst()); // Removes Front
+        System.out.println("Poll Last: " + deque.pollLast());   // Removes Back
+    }
+}
+
+BlockingQueue (from java.util.concurrent)
+-------------------------------------------
+import java.util.concurrent.*;
+
+public class BlockingQueueExample {
+    public static void main(String[] args) throws InterruptedException {
+        BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(2);
+
+        blockingQueue.put("Item1");
+        blockingQueue.offer("Item2", 1, TimeUnit.SECONDS);
+        System.out.println("Take: " + blockingQueue.take());
+
+        String result = blockingQueue.poll(2, TimeUnit.SECONDS); // Time-bounded
+        System.out.println("Polled: " + result);
+    }
+}
+
+
+
+PriorityQueue – Elements ordered by priority
+------------------------------------------------
+import java.util.*;
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); // Min-heap
+
+        pq.add(50);
+        pq.add(20);
+        pq.add(30);
+
+        System.out.println("Peek: " + pq.peek()); // 20
+        System.out.println("Poll: " + pq.poll()); // 20
+        System.out.println("Contains 50: " + pq.contains(50)); // true
+    }
+}
+
+
+LinkedList as a Queue
+---------------------------
+import java.util.*;
+
+public class LinkedListQueueExample {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+        queue.offer("Node1");
+        queue.offer("Node2");
+
+        System.out.println("Poll: " + queue.poll()); // Node1
+    }
+}
+
+
+ArrayDeque
+----------------------------
+import java.util.*;
+
+public class ArrayDequeExample {
+    public static void main(String[] args) {
+        ArrayDeque<String> deque = new ArrayDeque<>();
+
+        deque.add("Element1");
+        deque.addFirst("Element0");
+        deque.addLast("Element2");
+
+        System.out.println("Deque: " + deque); // [Element0, Element1, Element2]
+    }
+}
+
+
+
+
+
 
 
 
