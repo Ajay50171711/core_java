@@ -80,3 +80,145 @@ public class MultiplicationTable {
 }
 ------------------------------------------------------------
 
+package jail.learn;
+import java.util.Scanner;
+
+public class ATMMenu {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double balance = 10000;
+        boolean exit = false;
+
+        while (!exit) { // Outer loop for Main Menu
+            System.out.println("====== ATM Main Menu ======");
+            System.out.println("1. Banking");
+            System.out.println("2. Exit");
+            System.out.print("Choose option: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    boolean back = false;
+                    while (!back) { // Inner loop for Banking Sub-Menu
+                        System.out.println("\n--- Banking Menu ---");
+                        System.out.println("1. Deposit");
+                        System.out.println("2. Withdraw");
+                        System.out.println("3. Check Balance");
+                        System.out.println("4. Back to Main Menu");
+                        System.out.print("Choose option: ");
+                        int option = sc.nextInt();
+
+                        switch (option) {
+                            case 1:
+                                System.out.print("Enter amount to deposit: ");
+                                double dep = sc.nextDouble();
+                                balance += dep;
+                                System.out.println(dep + " deposited. New balance: " + balance);
+                                break;
+                            case 2:
+                                System.out.print("Enter amount to withdraw: ");
+                                double wd = sc.nextDouble();
+                                if (wd <= balance) {
+                                    balance -= wd;
+                                    System.out.println(wd + " withdrawn. New balance: " + balance);
+                                } else {
+                                    System.out.println("Insufficient balance.");
+                                }
+                                break;
+                            case 3:
+                                System.out.println("Current balance: " + balance);
+                                break;
+                            case 4:
+                                back = true; // Exit inner loop
+                                break;
+                            default:
+                                System.out.println("Invalid option.");
+                        }
+                    }
+                    break;
+                case 2:
+                    exit = true; // Exit outer loop
+                    System.out.println("Thank you for using ATM.");
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again.");
+            }
+        }
+        sc.close();
+    }
+}
+
+
+====================================================================================
+package jail.learn;
+import java.util.Scanner;
+
+public class CinemaSeatingBooking {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int rows = 5;
+        int seatsPerRow = 10;
+
+        // Initialize 2D array to store seat status
+        String[][] seats = new String[rows][seatsPerRow];
+
+        // Fill with seat labels initially
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < seatsPerRow; j++) {
+                seats[i][j] = "R" + (i + 1) + "S" + (j + 1);
+            }
+        }
+
+        boolean exit = false;
+        while (!exit) {
+            // Display seating arrangement
+            System.out.println("\nCinema Seating Arrangement:");
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < seatsPerRow; j++) {
+                    System.out.print(seats[i][j] + "\t");
+                }
+                System.out.println();
+            }
+
+            // Ask user to book a seat
+            System.out.println("\nEnter row number to book (or 0 to exit): ");
+            int row = sc.nextInt();
+            if (row == 0) {
+                exit = true;
+                System.out.println("Exiting booking system. Final seating arrangement below:");
+                break; // Exit booking loop
+            }
+
+            System.out.println("Enter seat number to book: ");
+            int seat = sc.nextInt();
+
+            // Validate input
+            if (row < 1 || row > rows || seat < 1 || seat > seatsPerRow) {
+                System.out.println("Invalid seat selection. Try again.");
+            } else {
+                // Check if already booked
+                if (seats[row - 1][seat - 1].contains("Booked")) {
+                    System.out.println("Seat already booked. Choose another seat.");
+                } else {
+                    seats[row - 1][seat - 1] += "(Booked)";
+                    System.out.println("Seat R" + row + "S" + seat + " successfully booked!");
+                }
+            }
+        }
+
+        // Display final seating arrangement before exiting
+        System.out.println("\nFinal Cinema Seating Arrangement:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < seatsPerRow; j++) {
+                System.out.print(seats[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+
+
